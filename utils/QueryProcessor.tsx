@@ -2,7 +2,15 @@ export default function QueryProcessor(query: string): string {
   function sumNumbersFromString(text: string): number {
     const numbers: number[] = text.match(/\d+/g)?.map(Number) || []; // Extract and convert numbers
     return numbers.reduce((acc, cur) => acc + cur, 0); // Sum up the numbers
-}
+  }
+
+  function findLargestNumber(text: string): number {
+    const numbers: number[] = text.match(/\d+/g)?.map(Number) || []; // Extract and convert numbers
+    if (numbers.length === 0) {
+        return NaN; // If no numbers found, return NaN
+    }
+    return Math.max(...numbers); // Find the maximum value among the numbers
+  }
 
   if (query.toLowerCase().includes("shakespeare")) {
     return (
@@ -20,7 +28,7 @@ export default function QueryProcessor(query: string): string {
 
   if (query.toLowerCase().includes("largest")) {
     return (
-      "jesse"
+      findLargestNumber(query).toString()
     );
   }
 
