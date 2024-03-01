@@ -1,4 +1,9 @@
 export default function QueryProcessor(query: string): string {
+  function sumNumbersFromString(text: string): number {
+    const numbers: number[] = text.match(/\d+/g)?.map(Number) || []; // Extract and convert numbers
+    return numbers.reduce((acc, cur) => acc + cur, 0); // Sum up the numbers
+}
+
   if (query.toLowerCase().includes("shakespeare")) {
     return (
       "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
@@ -10,6 +15,18 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("name")) {
     return (
       "jesse"
+    );
+  }
+
+  if (query.toLowerCase().includes("largest")) {
+    return (
+      "jesse"
+    );
+  }
+
+  if (query.toLowerCase().includes("plus")) {
+    return (
+      sumNumbersFromString(query).toString()
     );
   }
 
